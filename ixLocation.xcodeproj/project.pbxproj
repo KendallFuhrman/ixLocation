@@ -13,6 +13,9 @@
 		6F13C4171EE5424C000F20F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F13C4151EE5424C000F20F2 /* Main.storyboard */; };
 		6F13C4191EE5424C000F20F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F13C4181EE5424C000F20F2 /* Assets.xcassets */; };
 		6F13C41C1EE5424C000F20F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F13C41A1EE5424C000F20F2 /* LaunchScreen.storyboard */; };
+		6F13C4241EE5885B000F20F2 /* ActivityLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F13C4231EE5885B000F20F2 /* ActivityLogViewController.swift */; };
+		6F13C4261EE588AC000F20F2 /* AddActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F13C4251EE588AC000F20F2 /* AddActivityViewController.swift */; };
+		6F13C4281EE588B9000F20F2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F13C4271EE588B9000F20F2 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		6F13C4181EE5424C000F20F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F13C41B1EE5424C000F20F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F13C41D1EE5424C000F20F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F13C4231EE5885B000F20F2 /* ActivityLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLogViewController.swift; sourceTree = "<group>"; };
+		6F13C4251EE588AC000F20F2 /* AddActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActivityViewController.swift; sourceTree = "<group>"; };
+		6F13C4271EE588B9000F20F2 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,9 @@
 				6F13C4111EE5424C000F20F2 /* FirstViewController.swift */,
 				6F13C4131EE5424C000F20F2 /* SecondViewController.swift */,
 				6F13C4151EE5424C000F20F2 /* Main.storyboard */,
+				6F13C4251EE588AC000F20F2 /* AddActivityViewController.swift */,
+				6F13C4271EE588B9000F20F2 /* SettingsViewController.swift */,
+				6F13C4231EE5885B000F20F2 /* ActivityLogViewController.swift */,
 				6F13C4181EE5424C000F20F2 /* Assets.xcassets */,
 				6F13C41A1EE5424C000F20F2 /* LaunchScreen.storyboard */,
 				6F13C41D1EE5424C000F20F2 /* Info.plist */,
@@ -140,9 +149,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F13C4241EE5885B000F20F2 /* ActivityLogViewController.swift in Sources */,
 				6F13C4141EE5424C000F20F2 /* SecondViewController.swift in Sources */,
 				6F13C4101EE5424C000F20F2 /* AppDelegate.swift in Sources */,
+				6F13C4261EE588AC000F20F2 /* AddActivityViewController.swift in Sources */,
 				6F13C4121EE5424C000F20F2 /* FirstViewController.swift in Sources */,
+				6F13C4281EE588B9000F20F2 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
