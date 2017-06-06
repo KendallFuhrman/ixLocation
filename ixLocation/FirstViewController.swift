@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class FirstViewController: UIViewController, CLLocationManagerDelegate {
+class FirstViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     // need to implement delegate protocol
     
@@ -21,6 +21,14 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let location = CLLocationCoordinate2D(latitude: -33.918861,longitude: 18.423300)
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegion(center: location, span: span)
+        map.setRegion(region, animated: true)
+        
+        // Always show the users location
+        map.showsUserLocation = true
+        
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -30,15 +38,38 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()
         }
-        
-
+    
       
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setMapType()
     }
 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-       
+    }
+    
+        func setMapType() {
+            let mapType = UserDefaults.standard.string(forKey: "mapType")
+            
+            if mapType != nil{
+                
+                if mapType == "hybrid" {
+                    map.mapType = .hybrid
+                }
+                
+                if mapType == "standard" {
+                    map.mapType = .standard
+                }
+                
+                if mapType == "satellite" {
+                    map.mapType = .satellite
+                }
+            }
+        }
+        
         func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             
             // Get the users location from the array of locations
@@ -60,4 +91,4 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         }
 }
 }
-}
+

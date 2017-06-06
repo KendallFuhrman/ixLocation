@@ -9,7 +9,12 @@
 import UIKit
 
 class AddActivityViewController: UIViewController {
+    
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var nameDescriptionField: UITextField!
+    @IBOutlet weak var imageField: UIImageView!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
