@@ -11,8 +11,21 @@ import MapKit
 
 class SettingsTableViewController: UITableViewController {
 
+
+    @IBOutlet weak var userName: UILabel!
+    
+
+    override func viewDidAppear(_ animated: Bool) {
+        userName.text = UserDefaults.standard.string(forKey: "userName")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        userName.text = UserDefaults.standard.string(forKey: "userName")
+        
+        if UserDefaults.standard.string(forKey: "name") == nil {
+            UserDefaults.standard.set("Create User Name" , forKey: "userName")
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

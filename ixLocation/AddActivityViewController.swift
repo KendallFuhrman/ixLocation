@@ -8,13 +8,36 @@
 
 import UIKit
 
-class AddActivityViewController: UIViewController {
+class AddActivityViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var nameDescriptionField: UITextField!
+
+    @IBOutlet weak var descriptionTextField: UITextView!
+    
     @IBOutlet weak var imageField: UIImageView!
+ 
+
+    var delegate: AddActivityDelegate?
+    var newActivity: Activity?
+    
 
     
+    @IBAction func saveActivity(_ sender: Any) {
+        
+        newActivity?.name = nameTextField.text!
+        newActivity?.description = descriptionTextField.text!
+        
+        delegate?.didSaveActivity(activity: newActivity!)
+        dismiss(animated: true, completion: nil)
+        
+
+    }
+    @IBAction func cancelActivity(_ sender: Any) {
+        delegate?.didCancelActivity()
+        dismiss(animated: true, completion: nil)
+        func unwindTo (segue: UIStoryboardSegue) {
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
