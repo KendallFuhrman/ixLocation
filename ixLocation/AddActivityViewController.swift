@@ -16,21 +16,24 @@ class AddActivityViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBOutlet weak var imageField: UIImageView!
  
-
-    var delegate: AddActivityDelegate?
-    var newActivity: Activity?
     
+    var newActivity: Activity?
+    var delegate: AddActivityDelegate?
 
+    
+    @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func saveActivity(_ sender: Any) {
         
-        newActivity?.name = nameTextField.text!
-        newActivity?.description = descriptionTextField.text!
+        newActivity = Activity(name: nameTextField.text,
+            description: descriptionTextField.text)
         
         delegate?.didSaveActivity(activity: newActivity!)
+    
         dismiss(animated: true, completion: nil)
         
-
     }
    
     

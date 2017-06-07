@@ -16,6 +16,6 @@ class Activity {
     init?(name: String?, description: String?) {
         self.name = name
         self.description = description
-}
+    }
 
 }

@@ -8,22 +8,37 @@
 
 import UIKit
 
-class ActivitiesTableViewController: UITableViewController {
+class ActivitiesTableViewController: UITableViewController, AddActivityDelegate {
     
     var activities: [Activity] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        /*
         let activity1 = Activity(name: "Act1", description: "activity 1")
         activities.append(activity1!)
+        
         let activity2 = Activity(name: "Act2", description: "Activity 2")
         activities.append(activity2!)
+
+ */
+        
+
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func didSaveActivity(activity: Activity) {
+        activities.append(activity)
+        self.tableView.reloadData()
+    }
+    
+    func didCancelActivity() {
     }
 
     // MARK: - Table view data source
@@ -84,14 +99,22 @@ class ActivitiesTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "navToAddActivity" {
+            let navigationViewController = segue.destination as!
+            UINavigationController
+            let addActivityViewController = navigationViewController.topViewController as! AddActivityViewController
+            
+        addActivityViewController.delegate = self
+        }
+      
     }
-    */
+ 
 
 }

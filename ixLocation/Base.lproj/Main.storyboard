@@ -109,6 +109,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Activity" id="zMS-Gw-53J">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="nxW-3Z-abB">
+                            <connections>
+                                <action selector="cancel:" destination="j0v-mB-OUH" id="iJw-yi-YXY"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="fHb-L7-gBa">
                             <connections>
                                 <action selector="saveActivity:" destination="j0v-mB-OUH" id="smf-zn-9IB"/>
@@ -442,7 +447,7 @@
                     <navigationItem key="navigationItem" title="Activities" id="NuV-rn-py3">
                         <barButtonItem key="rightBarButtonItem" tag="1" image="plus" id="Hc2-ga-0RT">
                             <connections>
-                                <segue destination="jqc-5X-dx4" kind="presentation" id="6dh-aj-NiP"/>
+                                <segue destination="jqc-5X-dx4" kind="presentation" identifier="navToAddActivity" id="6dh-aj-NiP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
