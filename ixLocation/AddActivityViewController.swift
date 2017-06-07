@@ -32,12 +32,10 @@ class AddActivityViewController: UIViewController, UIImagePickerControllerDelega
         
 
     }
-    @IBAction func cancelActivity(_ sender: Any) {
-        delegate?.didCancelActivity()
+    @IBAction func cancel(_ sender: UIButton) { delegate?.didCancelActivity()
         dismiss(animated: true, completion: nil)
-        func unwindTo (segue: UIStoryboardSegue) {
-        }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

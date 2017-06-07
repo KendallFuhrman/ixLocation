@@ -111,7 +111,7 @@
                     <navigationItem key="navigationItem" title="Add Activity" id="zMS-Gw-53J">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="TZU-Ns-pbX">
                             <connections>
-                                <action selector="cancelActivity:" destination="j0v-mB-OUH" id="Xqo-ds-b6d"/>
+                                <action selector="cancel:" destination="j0v-mB-OUH" id="SVd-h7-cGt"/>
                                 <segue destination="Low-mb-so3" kind="unwind" unwindAction="unwindToThisViewControllerWithSegue:" id="VVf-jl-29Q"/>
                             </connections>
                         </barButtonItem>
