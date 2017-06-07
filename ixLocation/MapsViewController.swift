@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapsViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class MapsViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, AddActivityDelegate {
 
     // need to implement delegate protocol
     
@@ -39,6 +39,21 @@ class MapsViewController: UIViewController, CLLocationManagerDelegate, MKMapView
       
     }
     
+    func didSaveActivity(activity: Activity) {
+        print(activity)
+        let annotation = MKPointAnnotation()
+        
+        annotation.coordinate = CLLocationCoordinate2DMake((activity.location?.lat)!, (activity.location?.lng)!)
+        
+        annotation.title = activity.name
+        
+        map.addAnnotation(annotation)
+        
+    }
+    
+    func didCancelActivity() {
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         setMapType()
     }
@@ -67,7 +82,7 @@ class MapsViewController: UIViewController, CLLocationManagerDelegate, MKMapView
             }
         }
         
-        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
             
             // Get the users location from the array of locations
             let userLocation: CLLocation = locations[0] as CLLocation
@@ -80,12 +95,32 @@ class MapsViewController: UIViewController, CLLocationManagerDelegate, MKMapView
             
             // Store reference to the users location in the class instance (self)
             self.currentUserLocation = userLocation
-
-        func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
-        {
-            // An error occurred trying to retrieve users location
-            print("Error \(error)")
         }
-}
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
+    {
+        // An error occurred trying to retrieve users location
+        print("Error \(error)")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "navFromMap" {
+            let navigationViewController = segue.destination as!
+            UINavigationController
+            let addActivityViewController = navigationViewController.topViewController as! AddActivityViewController
+            
+            let activity = Activity()
+            activity?.location = GeoPoint()
+            
+            activity?.location?.lat = currentUserLocation.coordinate.latitude
+            activity?.location?.lng  = currentUserLocation.coordinate.longitude
+            
+            addActivityViewController.newActivity = activity
+            addActivityViewController.delegate = self
+        }
+        
+    }
+
 }
 

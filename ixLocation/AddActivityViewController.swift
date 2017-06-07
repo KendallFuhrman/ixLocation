@@ -27,8 +27,10 @@ class AddActivityViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBAction func saveActivity(_ sender: Any) {
         
-        newActivity = Activity(name: nameTextField.text,
-            description: descriptionTextField.text)
+        
+        newActivity?.name = nameTextField.text
+        newActivity?.description = descriptionTextField.text
+    
         
         delegate?.didSaveActivity(activity: newActivity!)
     

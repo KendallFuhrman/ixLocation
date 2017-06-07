@@ -15,5 +15,11 @@ class GeoPoint {
     init(latitude lat: Double, longitude lng: Double) {
         self.lat = lat
         self.lng = lng
+    
 }
+    init(){
+        self.lat = 0.0
+        self.lng = 0.0
+    }
+    
 }

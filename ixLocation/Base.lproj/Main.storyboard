@@ -34,7 +34,13 @@
                             <constraint firstItem="aVz-Z0-lQP" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="8" symbolic="YES" id="kT1-Yl-CaJ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Apple Maps" id="nbO-xw-iTl"/>
+                    <navigationItem key="navigationItem" title="Apple Maps" id="nbO-xw-iTl">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="zic-ag-c38">
+                            <connections>
+                                <segue destination="jqc-5X-dx4" kind="presentation" identifier="navFromMap" id="Evc-IG-qUB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="map" destination="aVz-Z0-lQP" id="bo9-4J-naQ"/>
                     </connections>
@@ -502,4 +508,7 @@
         <image name="profile" width="959" height="957"/>
         <image name="settings-1" width="26" height="26"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Evc-IG-qUB"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -12,10 +12,18 @@ import UIKit
 class Activity {
     var name: String?
     var description: String?
+    var location: GeoPoint?
+    
+    init?() {
+        self.name = ""
+        self.description = ""
+        self.location = GeoPoint(latitude: 0.0, longitude: 0.0)
+    }
     
     init?(name: String?, description: String?) {
         self.name = name
         self.description = description
+        
     }
 
 }

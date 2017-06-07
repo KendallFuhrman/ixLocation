@@ -7,25 +7,26 @@
 //
 
 import UIKit
-
-class ActivitiesTableViewController: UITableViewController, AddActivityDelegate {
+import MapKit
+class ActivitiesTableViewController: UITableViewController, AddActivityDelegate, CLLocationManagerDelegate {
     
     var activities: [Activity] = []
+    var locationManager : CLLocationManager!
+    var currentUserLocation: CLLocation!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        /*
-        let activity1 = Activity(name: "Act1", description: "activity 1")
-        activities.append(activity1!)
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        //locationManager.requestWhenInUseAuthorization()
         
-        let activity2 = Activity(name: "Act2", description: "Activity 2")
-        activities.append(activity2!)
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+        }
 
- */
-        
-
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,47 +63,26 @@ class ActivitiesTableViewController: UITableViewController, AddActivityDelegate 
         return cell
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        // Get the users location from the array of locations
+        let userLocation: CLLocation = locations[0] as CLLocation
+        
+        // You can call stopUpdatingLocation() to stop listening for location updates
+        // manager.stopUpdatingLocation()
+        
+        print("user latitude = \(userLocation.coordinate.latitude)")
+        print("user longitude = \(userLocation.coordinate.longitude)")
+        
+        // Store reference to the users location in the class instance (self)
+        self.currentUserLocation = userLocation
+    }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
+    {
+        // An error occurred trying to retrieve users location
+        print("Error \(error)")
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -111,7 +91,15 @@ class ActivitiesTableViewController: UITableViewController, AddActivityDelegate 
             UINavigationController
             let addActivityViewController = navigationViewController.topViewController as! AddActivityViewController
             
+        let activity = Activity()
+            activity?.location = GeoPoint()
+            
+        activity?.location?.lat = currentUserLocation.coordinate.latitude
+        activity?.location?.lng  = currentUserLocation.coordinate.longitude
+        addActivityViewController.newActivity = activity
         addActivityViewController.delegate = self
+        
+            
         }
       
     }
