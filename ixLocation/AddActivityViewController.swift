@@ -32,9 +32,7 @@ class AddActivityViewController: UIViewController, UIImagePickerControllerDelega
         
 
     }
-    @IBAction func cancel(_ sender: UIButton) { delegate?.didCancelActivity()
-        dismiss(animated: true, completion: nil)
-    }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()

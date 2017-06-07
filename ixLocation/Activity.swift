@@ -10,17 +10,12 @@ import Foundation
 import UIKit
 
 class Activity {
+    var name: String?
+    var description: String?
     
-    var name: String
-    var description: String
-    var image: UIImage?
-    var location: GeoPoint
-    
-    init?() {
-        self.name = ""
-        self.description = ""
-        self.image = nil
-        self.location = GeoPoint(latitude: 0.0, longitude: 0.0)
+    init?(name: String?, description: String?) {
+        self.name = name
+        self.description = description
 }
 
 }

@@ -10,14 +10,15 @@ import UIKit
 
 class ActivitiesTableViewController: UITableViewController {
     
+    var activities: [Activity] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        let activity1 = Activity(name: "Act1", description: "activity 1")
+        activities.append(activity1!)
+        let activity2 = Activity(name: "Act2", description: "Activity 2")
+        activities.append(activity2!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,23 +30,24 @@ class ActivitiesTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return activities.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
-        // Configure the cell...
+        cell.textLabel?.text = activities[indexPath.row].name
+        cell.detailTextLabel?.text = activities[indexPath.row].description
 
         return cell
     }
-    */
+    
+    
 
     /*
     // Override to support conditional editing of the table view.
